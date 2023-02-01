@@ -227,6 +227,7 @@ public class Juego {
             System.out.println("2-Resolver.");
             System.out.println("3-Consultar dinero.");
             opcion = lec.nextInt();
+            lec.nextLine();
             switch (opcion) {
                 case 1:
                     System.out.println();
@@ -234,15 +235,12 @@ public class Juego {
                     break;
                 case 2:
                     System.out.println("Introduce la respuesta");
-                    String respuesta = lec.next();
-                    if(respuesta.equals(panel))
-                    {
+                    String respuesta = lec.nextLine();
+                    if (respuesta.toUpperCase().equals(panel)) {
                         System.out.println("Panel correcto");
-                    }
-                    else
-                    {
+                    } else {
                         System.out.println("Fallaste el panel");
-                        turno=false;
+                        turno = false;
                     }
                     break;
                 case 3:
@@ -276,10 +274,26 @@ public class Juego {
     }
 
     public static String Panel() {
-        System.out.println();
-        System.out.println("PISTA: ");
-        System.out.println();
-        return panel;
+        {
+            String panelo=panel;
+            for(int i=0;i<panelo.length();i++)
+            {
+                char white=panelo.charAt(i);
+                boolean spacio=Character.isWhitespace(white);
+                if(spacio==true)
+                {
+                    System.out.print(" ");
+                }
+                else
+                {
+                    System.out.print("*");
+                }
+            }
+            System.out.println("");
+            System.out.println("PISTA: ");
+            return panel.toUpperCase();
+        }
+
     }
 
     public static void Comprobar() {
@@ -303,6 +317,29 @@ public class Juego {
                 System.out.println("Pierdes el turno");
             }
         }
+        boolean cont;
+        for(int i=0;i<frase.length();i++)
+        {
+           char let=frase.charAt(i);
+           if(let==letra)
+           {
+               System.out.print(letra);
+           }
+           else
+           {
+               char white=frase.charAt(i);
+                boolean spacio=Character.isWhitespace(white);
+                if(spacio==true)
+                {
+                    System.out.print(" ");
+                }
+                else
+                {
+                    System.out.print("*");
+                }
+           }
+        }
+        System.out.println("");
     }
 
     public static void Vocal() {
@@ -349,4 +386,3 @@ public class Juego {
         }
     }
 }
-
