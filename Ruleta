@@ -423,3 +423,32 @@ public static void Comprobar() {
         System.out.println(respuesta);
         System.out.println("");
     }
+
+Panel:
+
+public static void Panel() {
+        {
+            String panelo = panel;
+            if (npanel == 0) {
+                for (int i = 0; i < caracteres.length; i++) {
+                    char white = panelo.charAt(i);
+                    boolean spacio = Character.isWhitespace(white);
+                    if (spacio == true) {
+                        caracteres[i] = ' ';
+                    } else {
+                        caracteres[i] = '*';
+                    }
+                }
+                StringBuilder sb = new StringBuilder();
+                sb.append(caracteres);
+                System.out.println(sb);
+                System.out.println("");
+                System.out.println("PISTA: ");
+            } else {
+                System.out.println(caracteres);
+                System.out.println("");
+                System.out.println("Pista: ");
+            }
+
+        }
+    }
