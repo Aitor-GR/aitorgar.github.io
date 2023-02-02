@@ -385,3 +385,41 @@ public class Juego {
         }
     }
 }
+
+Comprobar:
+public static void Comprobar() {
+
+        String frase = panel;
+        ArrayList<Character> letDichas=new ArrayList<>();
+        String dichas=letDichas.toString();
+        char[] respuesta = caracteres;
+        System.out.println("¿Que consonante dices?");
+        letras = 0;
+        char letra = lec.next().toUpperCase().charAt(0);
+        if (letra == 65 || letra == 69 || letra == 73 || letra == 79 || letra == 85) {
+            System.out.println("Dijiste una vocal.");
+            Comprobar();
+        } else {
+            if (dichas.contains(frase)) {
+                for (int i = 0; i < frase.length(); i++) {
+                    if (frase.charAt(i) == letra) {
+                        letras++;
+                    }
+                }
+                System.out.println("La " + letra + " aparece " + letras + " veces");
+                if (letras == 0) {
+                    turno = false;
+                    System.out.println("Pierdes el turno");
+                }
+            }
+        }
+        for (int i = 0; i < frase.length(); i++) {
+            char let = frase.charAt(i);
+            if (let == letra) {
+                respuesta[i] = letra;
+                letDichas.add(let);
+            }
+        }
+        System.out.println(respuesta);
+        System.out.println("");
+    }
