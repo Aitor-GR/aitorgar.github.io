@@ -317,7 +317,6 @@ public class Juego {
                 System.out.println("Pierdes el turno");
             }
         }
-        boolean cont;
         for(int i=0;i<frase.length();i++)
         {
            char let=frase.charAt(i);
