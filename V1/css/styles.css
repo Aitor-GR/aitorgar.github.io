@@ -1,0 +1,57 @@
+body
+{
+    background-image: url('../img/fondo5.jfif');
+    background-size:auto;
+    
+}
+.titulo
+{
+    color:rgb(240, 57, 57);
+    font-family: 'DarkFuture';
+    text-align: left;
+}
+.personajes
+{
+    text-align: center;
+    justify-content: center;
+}
+h1,h2
+{
+    color:rgb(240, 57, 57);
+    font-family: 'DarkFuture';
+    text-align: center;
+}
+h3,p,table,form,a
+{
+    font-family: 'future';
+    color: aqua;
+    text-align: center;
+    
+}
+.table
+{
+    align-items: center;
+}
+.links
+{
+    text-align: center;
+}
+.video
+{
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+}
+@font-face 
+{
+    font-family: 'future';
+    src: url('../fonts/Future.ttf');
+    font-weight: bold;
+}
+@font-face
+{
+    font-family: 'DarkFuture';
+    src:url('../fonts/DarkFuture.ttf');
+    font-weight: bold;
+}
