@@ -92,6 +92,9 @@ public class Juego {
     }
 
     public static void PanelO() {
+         /**
+         *Método donde guardamos los paneles en un ArrayList
+         */
         PanelO = new ArrayList<>();
         PanelO.add("APOYAN LA CABEZA EN LA ALMOHADA Y SE DUERMEN");//LOS HAY CON SUERTE
         PanelO.add("SE TATUA UN QR CON SU PASAPORTE COVID");//TITULAR LOCO
@@ -105,6 +108,9 @@ public class Juego {
     }
 
     public static void Pista() {
+         /**
+         *Método donde guardamos las pistas en un ArrayList
+         */
         ArrayList<String> pista = new ArrayList<>();
         pista.add("LOS HAY CON SUERTE");
         pista.add("TITULAR LOCO");
@@ -423,6 +429,7 @@ public class Juego {
                         System.out.println("Has dicho una consonante.");
                         Vocal();
                     }
+                     if (pactual >= 50) Vocal();
                     break;
                 }
             }
