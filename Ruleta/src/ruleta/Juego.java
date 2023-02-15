@@ -5,9 +5,15 @@ import java.util.Scanner;
 
 public class Juego {
 
-    /**
+     /**
+     * 
+     * @param pactual La puntuacion del jugador en este panel
+     * @param turno Boleano que indica el turno del jugador
+     * @param jugador Numero del jugador que empieza
+     * @param ronda numero de la ronda para selccionar el panel y su pista
      * 
      */
+    
     static Scanner lec = new Scanner(System.in);
     static int pactual;
     static int letras = 0;
