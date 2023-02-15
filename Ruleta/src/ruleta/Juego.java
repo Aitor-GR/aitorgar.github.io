@@ -443,12 +443,16 @@ public class Juego {
     }
 
     public static void Jugador() {
-        if (turno = false) {
+         ArrayList<Jugadores> jugador = new ArrayList<>();
+        jugador.add(new Jugadores(1,0,0));
+        jugador.add(new Jugadores(2,0,0));
+        jugador.add(new Jugadores(3,0,0));
+        /**if (turno = false) {
             jugador++;
         }
         if (jugador == 4) {
             jugador = 1;
-        }
+        }*/
     }
 
 }
