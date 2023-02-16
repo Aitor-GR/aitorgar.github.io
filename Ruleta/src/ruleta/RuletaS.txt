@@ -19,12 +19,13 @@ public class Juego {
     static int letras = 0;
     static boolean turno = true;
     static boolean comodin = false;
-    static int jugador = 1;
+    static int numJugador = 0;
     static int ronda = 0;
     static ArrayList<String> PanelO;
     static char[] caracteres;
     static int npanel = 0;
     static ArrayList<Character> letDichas = new ArrayList<>();
+    static ArrayList<Jugadores> Jugador;
     
      public static void Accion() {
          /**
@@ -34,6 +35,7 @@ public class Juego {
         int opcion = 0;
         turno = true;
         if (comodin == false || comodin == true) {
+            System.out.println("Esta jugando el jugador "+(numJugador+1));
             System.out.println("1-Tirar.");
             System.out.println("2-Resolver.");
             System.out.println("3-Consultar dinero.");
@@ -59,7 +61,7 @@ public class Juego {
                         Panel();
                     } else {
                         System.out.println("Fallaste el panel");
-                        turno = false;
+                        cambioJugador();
                         Accion();
                     }
                 }
@@ -72,24 +74,6 @@ public class Juego {
                     System.out.println("Opción no válida");
                     Accion();
                 }
-            }
-        }
-        if (comodin == true && turno == false) {
-            System.out.println("Usas el comodin?");
-            System.out.println("1-Si");
-            System.out.println("2-No");
-            opcion = lec.nextInt();
-            switch (opcion) {
-                case 1:
-                    comodin = false;
-                    Accion();
-                    break;
-                case 2:
-                    System.out.println("Pierdes el turno");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    Accion();
             }
         }
     }
@@ -153,12 +137,12 @@ public class Juego {
                 break;
             case 2:
                 System.out.println("Pierde turno");
-                turno = false;
+                cambioJugador();
                 break;
             case 3:
                 System.out.println("Quiebra");
                 pactual = 0;
-                turno = false;
+                cambioJugador();
                 break;
             case 4:
                 System.out.println("Comodin");
@@ -369,7 +353,7 @@ public class Juego {
             if (letDichas.contains(letra)) {
                 System.out.println("La letra ya ha salido");
                 System.out.println("Pierdes el turno");
-                turno = false;
+                cambioJugador();
                 Accion();
             } else {
                 for (int i = 0; i < frase.length(); i++) {
@@ -379,7 +363,7 @@ public class Juego {
                 }
                 System.out.println("La " + letra + " aparece " + letras + " veces");
                 if (letras == 0) {
-                    turno = false;
+                    cambioJugador();
                     System.out.println("Pierdes el turno");
                 }
             }
@@ -446,16 +430,39 @@ public class Juego {
     }
 
     public static void Jugador() {
-         ArrayList<Jugadores> jugador = new ArrayList<>();
-        jugador.add(new Jugadores(1,0,0));
-        jugador.add(new Jugadores(2,0,0));
-        jugador.add(new Jugadores(3,0,0));
-        /**if (turno = false) {
-            jugador++;
+        Jugador= new ArrayList<>();
+        Jugador.add(new Jugadores(1));
+        Jugador.add(new Jugadores(2));
+        Jugador.add(new Jugadores(3));
+    }
+    
+    public static void cambioJugador() {
+        turno=false;
+        if (comodin == true && turno == false) {
+            System.out.println("Usas el comodin?");
+            System.out.println("1-Si");
+            System.out.println("2-No");
+            int opcion = lec.nextInt();
+            switch (opcion) {
+                case 1:
+                    comodin = false;
+                    Accion();
+                    break;
+                case 2:
+                    System.out.println("Pierdes el turno");
+                    cambioJugador();
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    Accion();
+            }
         }
-        if (jugador == 4) {
-            jugador = 1;
-        }*/
+        if (turno == false) {
+            numJugador++;
+        }
+        if (numJugador == Jugador.size()) {
+            numJugador = 0;
+        }
     }
 
 }
