@@ -5,15 +5,6 @@ import java.util.Scanner;
 
 public class Juego {
 
-     /**
-     * 
-     * @param pactual La puntuacion del jugador en este panel
-     * @param turno Boleano que indica el turno del jugador
-     * @param jugador Numero del jugador que empieza
-     * @param ronda numero de la ronda para selccionar el panel y su pista
-     * 
-     */
-    
     static Scanner lec = new Scanner(System.in);
     static int pactual;
     static int letras = 0;
@@ -25,76 +16,8 @@ public class Juego {
     static char[] caracteres;
     static int npanel = 0;
     static ArrayList<Character> letDichas = new ArrayList<>();
-    
-     public static void Accion() {
-         /**
-          * Aquí declaramos las acciones que puede hacer el jugador, 
-          * que son tirar la ruleta, resolver panel y consultar el dinero de ese panel.
-          */
-        int opcion = 0;
-        turno = true;
-        if (comodin == false || comodin == true) {
-            System.out.println("1-Tirar.");
-            System.out.println("2-Resolver.");
-            System.out.println("3-Consultar dinero.");
-            opcion = lec.nextInt();
-            switch (opcion) {
-                case 1 -> {
-                    System.out.println();
-                    npanel++;
-                    Gajos();
-                }
-                case 2 -> {
-                    System.out.println("Introduce la respuesta");
-                    String respuesta = lec.nextLine();
-                    respuesta = lec.nextLine();
-                    if (respuesta.toUpperCase().equals(PanelO.get(ronda))) {
-                        System.out.println("Panel correcto");
-                        System.out.println("Siguiente ronda");
-                        System.out.println("");
-                        ronda++;
-                        PanelO();
-                        Panel();
-                    } else {
-                        System.out.println("Fallaste el panel");
-                        turno = false;
-                    }
-                }
-                case 3 -> {
-                    System.out.println("Tienes " + pactual + "€");
-                    System.out.println();
-                    Accion();
-                }
-                default -> {
-                    System.out.println("Opción no válida");
-                    Accion();
-                }
-            }
-        }
-        if (comodin == true && turno == false) {
-            System.out.println("Usas el comodin?");
-            System.out.println("1-Si");
-            System.out.println("2-No");
-            opcion = lec.nextInt();
-            switch (opcion) {
-                case 1:
-                    comodin = false;
-                    Accion();
-                    break;
-                case 2:
-                    System.out.println("Pierdes el turno");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    Accion();
-            }
-        }
-    }
 
     public static void PanelO() {
-         /**
-         *Método donde guardamos los paneles en un ArrayList
-         */
         PanelO = new ArrayList<>();
         PanelO.add("APOYAN LA CABEZA EN LA ALMOHADA Y SE DUERMEN");//LOS HAY CON SUERTE
         PanelO.add("SE TATUA UN QR CON SU PASAPORTE COVID");//TITULAR LOCO
@@ -108,9 +31,6 @@ public class Juego {
     }
 
     public static void Pista() {
-         /**
-         *Método donde guardamos las pistas en un ArrayList
-         */
         ArrayList<String> pista = new ArrayList<>();
         pista.add("LOS HAY CON SUERTE");
         pista.add("TITULAR LOCO");
@@ -127,9 +47,6 @@ public class Juego {
     }
 
     public static void Gajos() {
-        /**
-         * Método para tener todos los gajos en cada posible tirada.
-         */
         int gajo = new java.util.Random().nextInt(23);
         switch (gajo) {
             case 0:
@@ -321,10 +238,70 @@ public class Juego {
         Accion();
     }
 
+    public static void Accion() {
+        int opcion = 0;
+        turno = true;
+        if (comodin == false || comodin == true) {
+            System.out.println("1-Tirar.");
+            System.out.println("2-Resolver.");
+            System.out.println("3-Consultar dinero.");
+            opcion = lec.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.println();
+                    npanel++;
+                    Gajos();
+                    break;
+                case 2:
+                    System.out.println("Introduce la respuesta");
+                    String respuesta = lec.nextLine();
+                    respuesta = lec.nextLine();
+                    if (respuesta.toUpperCase().equals(PanelO.get(ronda).toString())) {
+                        System.out.println("Panel correcto");
+                        System.out.println("Siguiente ronda");
+                        System.out.println("");
+                        ronda++;
+                        npanel=0;
+                        letDichas = new ArrayList<>();
+                        PanelO();
+                        Panel();
+                    } else {
+                        System.out.println("Fallaste el panel");
+                        turno = false;
+                        Accion();
+                    }
+                    break;
+                case 3:
+                    System.out.println("Tienes " + pactual + "€");
+                    System.out.println();
+                    Accion();
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    Accion();
+            }
+        }
+        if (comodin == true && turno == false) {
+            System.out.println("Usas el comodin?");
+            System.out.println("1-Si");
+            System.out.println("2-No");
+            opcion = lec.nextInt();
+            switch (opcion) {
+                case 1:
+                    comodin = false;
+                    Accion();
+                    break;
+                case 2:
+                    System.out.println("Pierdes el turno");
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    Accion();
+            }
+        }
+    }
+
     public static void Panel() {
-        /**
-         * Método para ocultar el panel
-         */
         {
             String panelo = PanelO.get(ronda).toString();
             if (npanel == 0) {
@@ -351,9 +328,6 @@ public class Juego {
 
     public static void Comprobar() {
 
-        /**
-         * Método que comprueba si la consonante dicha está en el panel, si la consonante dicha es repetida
-         */
         String frase = PanelO.get(ronda).toString();
         char[] respuesta = caracteres;
         System.out.println("¿Que consonante dices?");
@@ -393,9 +367,6 @@ public class Juego {
     }
 
     public static void Vocal() {
-        /**
-         * Método como el de comprobar, pero para las vocales, que es llamado en el turno 
-         */
         System.out.println("Quieres comprar vocal?");
         int opcion = 0;
         System.out.println("1-Si");
@@ -429,7 +400,6 @@ public class Juego {
                         System.out.println("Has dicho una consonante.");
                         Vocal();
                     }
-                     if (pactual >= 50) Vocal();
                     break;
                 }
             }
@@ -443,16 +413,12 @@ public class Juego {
     }
 
     public static void Jugador() {
-         ArrayList<Jugadores> jugador = new ArrayList<>();
-        jugador.add(new Jugadores(1,0,0));
-        jugador.add(new Jugadores(2,0,0));
-        jugador.add(new Jugadores(3,0,0));
-        /**if (turno = false) {
+        if (turno = false) {
             jugador++;
         }
         if (jugador == 4) {
             jugador = 1;
-        }*/
+        }
     }
 
 }
