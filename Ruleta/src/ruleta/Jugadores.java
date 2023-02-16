@@ -13,10 +13,8 @@ class Jugadores {
     private int pactual;
     private int ptotal;
 
-    public Jugadores(int numero, int pactual, int ptotal) {
+    public Jugadores(int numero) {
         this.numero = numero;
-        this.pactual = pactual;
-        this.ptotal = ptotal;
     }
 
     public int getNumero() {
