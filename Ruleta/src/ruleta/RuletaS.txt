@@ -1,6 +1,7 @@
 package ruleta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Juego {
@@ -27,7 +28,7 @@ public class Juego {
     static ArrayList<Character> letDichas = new ArrayList<>();
     static ArrayList<Jugadores> Jugador;
     
-     public static void Accion() {
+    public static void Accion() {
          /**
           * Aquí declaramos las acciones que puede hacer el jugador, 
           * que son tirar la ruleta, resolver panel y consultar el dinero de ese panel.
@@ -464,5 +465,8 @@ public class Juego {
             numJugador = 0;
         }
     }
-
+    
+    public static void Puntuacion(){
+    HashMap<String, Integer> puntuacion = new HashMap<>();
+    }
 }
