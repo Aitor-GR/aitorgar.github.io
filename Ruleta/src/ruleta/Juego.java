@@ -102,11 +102,17 @@ public class Juego {
                 cambioJugador();
             }
             case 4 -> {
-                System.out.println("Comodin");
+                if(comodin==true)
+                {System.out.println("Como caíste en comodín y ya lo tienes, juegas por 50€");
+                Comprobar();
+                puntuacionActual = puntuacionActual + 50 * letras;}
+                else
+                {System.out.println("Comodin");
                 Comprobar();
                 comodin = true;
                 if (puntuacionActual >= 50) {
                     Vocal();
+                }
                 }
             }
             case 5, 6, 7, 8, 9 -> {
