@@ -5,19 +5,32 @@ import java.util.Scanner;
 
 public class Juego {
 
+     /**
+     * 
+     * @param pactual La puntuacion del jugador en este panel
+     * @param turno Boleano que indica el turno del jugador
+     * @param jugador Numero del jugador que empieza
+     * @param ronda numero de la ronda para selccionar el panel y su pista
+     * 
+     */
+    
     static Scanner lec = new Scanner(System.in);
-    static int pactual;
     static int letras = 0;
     static boolean turno = true;
     static boolean comodin = false;
-    static int jugador = 1;
+    static int numJugador = 0;
     static int ronda = 0;
     static ArrayList<String> PanelO;
     static char[] caracteres;
     static int npanel = 0;
+    static int puntuacionActual = 0;
     static ArrayList<Character> letDichas = new ArrayList<>();
+    static ArrayList<Jugadores> Jugador= new ArrayList<>();;
 
     public static void PanelO() {
+         /**
+         *Método donde guardamos los paneles en un ArrayList
+         */
         PanelO = new ArrayList<>();
         PanelO.add("APOYAN LA CABEZA EN LA ALMOHADA Y SE DUERMEN");//LOS HAY CON SUERTE
         PanelO.add("SE TATUA UN QR CON SU PASAPORTE COVID");//TITULAR LOCO
@@ -31,6 +44,9 @@ public class Juego {
     }
 
     public static void Pista() {
+         /**
+         *Método donde guardamos las pistas en un ArrayList
+         */
         ArrayList<String> pista = new ArrayList<>();
         pista.add("LOS HAY CON SUERTE");
         pista.add("TITULAR LOCO");
@@ -45,219 +61,118 @@ public class Juego {
         System.out.println("PISTA: " + pistaO);
         Accion();
     }
+    
+    public static void Jugador() {
+        Jugador.add(new Jugadores());
+        Jugador.add(new Jugadores());
+        Jugador.add(new Jugadores());
+        Jugador.get(numJugador);
+    }
 
     public static void Gajos() {
-        int gajo = new java.util.Random().nextInt(23);
+        /**
+         * Método para tener todos los gajos en cada posible tirada.
+         */
+        //int gajo = new java.util.Random().nextInt(23);
+        int gajo =21;
         switch (gajo) {
-            case 0:
+            case 0 -> {
                 System.out.println("X2");
                 Comprobar();
-                pactual = pactual * 2;
-                if (pactual >= 50) {
+                puntuacionActual = puntuacionActual * 2;
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 1:
+            }
+            case 1 -> {
                 System.out.println("1/2");
                 Comprobar();
-                pactual = pactual / 2;
-                if (pactual >= 50) {
+                puntuacionActual = puntuacionActual / 2;
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Pierde turno");
-                turno = false;
-                break;
-            case 3:
+                cambioJugador();
+            }
+            case 3 -> {
                 System.out.println("Quiebra");
-                pactual = 0;
-                turno = false;
-                break;
-            case 4:
+                puntuacionActual = 0;
+                cambioJugador();
+            }
+            case 4 -> {
                 System.out.println("Comodin");
                 Comprobar();
                 comodin = true;
-                if (pactual >= 50) {
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 5:
+            }
+            case 5, 6, 7, 8, 9 -> {
                 System.out.println("50€");
                 Comprobar();
-                pactual = pactual + 50 * letras;
-                if (pactual >= 50) {
+                puntuacionActual = puntuacionActual + 50 * letras;
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 6:
-                System.out.println("50€");
-                Comprobar();
-                pactual = pactual + 50 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 7:
-                System.out.println("50€");
-                Comprobar();
-                pactual = pactual + 50 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 8:
-                System.out.println("50€");
-                Comprobar();
-                pactual = pactual + 50 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 9:
-                System.out.println("50€");
-                Comprobar();
-                pactual = pactual + 50 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 10:
+            }
+            case 10, 11, 12, 13, 14, 15, 16 -> {
                 System.out.println("100€");
                 Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
+                puntuacionActual = puntuacionActual + 100 * letras;
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 11:
-                System.out.println("100€");
-                Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 12:
-                System.out.println("100€");
-                Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 13:
-                System.out.println("100€");
-                Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 14:
-                System.out.println("100€");
-                Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 15:
-                System.out.println("100€");
-                Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 16:
-                System.out.println("100€");
-                Comprobar();
-                pactual = pactual + 100 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 17:
+            }
+            case 17, 18 -> {
                 System.out.println("200€");
                 Comprobar();
-                pactual = pactual + 200 * letras;
-                if (pactual >= 50) {
+                puntuacionActual = puntuacionActual + 200 * letras;
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 18:
-                System.out.println("200€");
-                Comprobar();
-                pactual = pactual + 200 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 19:
+            }
+            
+            case 19, 20, 21, 22, 23 -> {
                 System.out.println("150€");
                 Comprobar();
-                pactual = pactual + 150 * letras;
-                if (pactual >= 50) {
+                Jugadores jugadorActual= Jugador.get(numJugador);
+                puntuacionActual= (jugadorActual.getPuntuacionActual()+ 150 * letras);
+                jugadorActual.setPuntuacionActual(puntuacionActual);
+                if (puntuacionActual >= 50) {
                     Vocal();
                 }
-                break;
-            case 20:
-                System.out.println("150€");
-                Comprobar();
-                pactual = pactual + 150 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 21:
-                System.out.println("150€");
-                Comprobar();
-                pactual = pactual + 150 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 22:
-                System.out.println("150€");
-                Comprobar();
-                pactual = pactual + 150 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
-            case 23:
-                System.out.println("150€");
-                Comprobar();
-                pactual = pactual + 150 * letras;
-                if (pactual >= 50) {
-                    Vocal();
-                }
-                break;
+            }
         }
         Accion();
     }
-
+    
     public static void Accion() {
+         /**
+          * Aquí declaramos las acciones que puede hacer el jugador, 
+          * que son tirar la ruleta, resolver panel y consultar el dinero de ese panel.
+          */
         int opcion = 0;
         turno = true;
         if (comodin == false || comodin == true) {
+            System.out.println("Esta jugando el jugador "+(numJugador+1));
             System.out.println("1-Tirar.");
             System.out.println("2-Resolver.");
             System.out.println("3-Consultar dinero.");
             opcion = lec.nextInt();
             switch (opcion) {
-                case 1:
+                case 1 -> {
                     System.out.println();
                     npanel++;
                     Gajos();
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Introduce la respuesta");
                     String respuesta = lec.nextLine();
                     respuesta = lec.nextLine();
-                    if (respuesta.toUpperCase().equals(PanelO.get(ronda).toString())) {
-                        System.out.println("Panel correcto");
+                    if (respuesta.toUpperCase().equals(PanelO.get(ronda))) {
+                        System.out.println("Panel correcto, has resuelto con "+puntuacionActual+"€");
                         System.out.println("Siguiente ronda");
                         System.out.println("");
                         ronda++;
@@ -267,41 +182,27 @@ public class Juego {
                         Panel();
                     } else {
                         System.out.println("Fallaste el panel");
-                        turno = false;
+                        cambioJugador();
                         Accion();
                     }
-                    break;
-                case 3:
-                    System.out.println("Tienes " + pactual + "€");
+                }
+                case 3 -> {
+                    System.out.println("Tienes " + puntuacionActual + "€");
                     System.out.println();
                     Accion();
-                    break;
-                default:
+                }
+                default -> {
                     System.out.println("Opción no válida");
                     Accion();
-            }
-        }
-        if (comodin == true && turno == false) {
-            System.out.println("Usas el comodin?");
-            System.out.println("1-Si");
-            System.out.println("2-No");
-            opcion = lec.nextInt();
-            switch (opcion) {
-                case 1:
-                    comodin = false;
-                    Accion();
-                    break;
-                case 2:
-                    System.out.println("Pierdes el turno");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    Accion();
+                }
             }
         }
     }
 
     public static void Panel() {
+        /**
+         * Método para ocultar el panel
+         */
         {
             String panelo = PanelO.get(ronda).toString();
             if (npanel == 0) {
@@ -328,6 +229,9 @@ public class Juego {
 
     public static void Comprobar() {
 
+        /**
+         * Método que comprueba si la consonante dicha está en el panel,y si la consonante dicha es repetida
+         */
         String frase = PanelO.get(ronda).toString();
         char[] respuesta = caracteres;
         System.out.println("¿Que consonante dices?");
@@ -340,7 +244,7 @@ public class Juego {
             if (letDichas.contains(letra)) {
                 System.out.println("La letra ya ha salido");
                 System.out.println("Pierdes el turno");
-                turno = false;
+                cambioJugador();
                 Accion();
             } else {
                 for (int i = 0; i < frase.length(); i++) {
@@ -350,7 +254,7 @@ public class Juego {
                 }
                 System.out.println("La " + letra + " aparece " + letras + " veces");
                 if (letras == 0) {
-                    turno = false;
+                    cambioJugador();
                     System.out.println("Pierdes el turno");
                 }
             }
@@ -367,6 +271,10 @@ public class Juego {
     }
 
     public static void Vocal() {
+        /**
+         * Método como el de comprobar, pero para las vocales, que es llamado en el turno 
+         */
+        if(turno=true){
         System.out.println("Quieres comprar vocal?");
         int opcion = 0;
         System.out.println("1-Si");
@@ -386,7 +294,7 @@ public class Juego {
                     Accion();
                 } else {
                     if (letra == 65 || letra == 69 || letra == 73 || letra == 79 || letra == 85) {
-                        pactual = pactual - 50;
+                        puntuacionActual = puntuacionActual - 50;
                         for (int i = 0; i < frase.length(); i++) {
                             if (frase.charAt(i) == letra) {
                                 vocal++;
@@ -400,6 +308,7 @@ public class Juego {
                         System.out.println("Has dicho una consonante.");
                         Vocal();
                     }
+                    if (puntuacionActual >= 50) Vocal();
                     break;
                 }
             }
@@ -410,15 +319,36 @@ public class Juego {
                 System.out.println("Opción no válida");
                 Accion();
         }
-    }
-
-    public static void Jugador() {
-        if (turno = false) {
-            jugador++;
-        }
-        if (jugador == 4) {
-            jugador = 1;
         }
     }
-
+    
+    public static void cambioJugador() {
+        turno=false;
+        if (comodin == true && turno == false) {
+            System.out.println("Usas el comodin?");
+            System.out.println("1-Si");
+            System.out.println("2-No");
+            int opcion = lec.nextInt();
+            switch (opcion) {
+                case 1:
+                    comodin = false;
+                    Accion();
+                    break;
+                case 2:
+                    System.out.println("Pierdes el turno");
+                    cambioJugador();
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+                    Accion();
+            }
+        }
+        if (turno == false) {
+            numJugador++;
+        }
+        if (numJugador == Jugador.size()) {
+            numJugador = 0;
+        }
+    }
+    
 }
