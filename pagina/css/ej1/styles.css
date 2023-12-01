@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.loader {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar {
+  height: 100px;
+  width: 100px;
+  background-color: #3498db;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-name: moveBar;
+}
+
+@keyframes moveBar {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-100px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
