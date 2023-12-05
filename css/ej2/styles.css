@@ -1,0 +1,34 @@
+.container {
+    position: relative;
+    margin: 2%;
+  }
+  
+  .box {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+  }
+  
+  .box1 {
+    background-color: yellow;
+    top: 0;
+    border: 5px solid black;
+  }
+  
+  .box2 {
+    background-color: red;
+    top: 40px;
+    left: 30px;
+    border: 5px solid black;
+  }
+  
+  .box3 {
+    background-color: blue;
+    top: 80px;
+    left: 60px;
+    border: 5px solid black;
+  }
+
+  .lorem {
+    margin: 5px;
+  }
